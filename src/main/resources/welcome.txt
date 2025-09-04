@@ -1,0 +1,6 @@
+Welcome to TaskManager v1.0!
+
+This is your personal command-line task organizer.
+Type 'help' to see available commands, or 'quit' to exit.
+
+Your tasks will be saved automatically.

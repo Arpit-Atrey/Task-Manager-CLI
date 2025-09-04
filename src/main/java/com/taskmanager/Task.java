@@ -7,9 +7,9 @@ import java.util.Objects;
 public class Task {
         private final int id;
         private final String description;
-        private boolean completed;
+        private boolean complete;
         private LocalDateTime createdAt;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(Config.getDateFormat());
 
         Task(int nextId, String description) {
             this.id = nextId;
@@ -33,16 +33,16 @@ public class Task {
 //            this.description = description;
 //        }
 
-        boolean getCompleted() {
-            return this.completed;
+        boolean isCompleted() {
+            return this.complete;
         }
 
-        void setCompleted(boolean completed) {
-            this.completed = completed;
+        void setComplete(boolean complete) {
+            this.complete = complete;
         }
 
         String getCreatedAt(){
-            return this.createdAt.format(formatter);
+            return this.createdAt.format(FORMATTER);
         }
 
         void setCreatedAt(LocalDateTime createdAt) {
@@ -51,8 +51,10 @@ public class Task {
 
         @Override
         public String toString() {
-            return getId() + ". " + getDescription() + " " + getCompleted() + " " + getCreatedAt();
+             String status = complete ? "✓" : " ";
+             return "[" + status + "] " + id + ". " + description + " (Created: " + getCreatedAt() + ")";
         }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;

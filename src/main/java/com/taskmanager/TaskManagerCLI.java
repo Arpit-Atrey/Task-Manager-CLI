@@ -1,5 +1,6 @@
 package com.taskmanager;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class TaskManagerCLI {
@@ -7,7 +8,7 @@ public class TaskManagerCLI {
 
     public static void main(String[] args) {
         boolean running = true;
-        try (Scanner scanner = new Scanner(System.in)){
+        try (Scanner scanner = new Scanner(System.in)) {
             if (args.length == 0) {
                 while (running) {
 
@@ -20,6 +21,7 @@ public class TaskManagerCLI {
                             System.out.print("Enter task description: ");
                             arg = scanner.nextLine().trim();
                             add(arg);
+                            System.out.println("Task added: " + arg);
                         }
                         case 2 -> list();
                         case 3 -> {
@@ -39,18 +41,16 @@ public class TaskManagerCLI {
                         default -> System.out.println("Not an option");
                     }
                 }
-            }
-            else {
+            } else {
                 String command = args[0];
                 switch (command) {
                     case "add" -> {
                         if (args.length > 1) {
-                            String description = String.join(" ",java.util.Arrays.copyOfRange(args, 1, args.length));
+                            String description = String.join(" ", java.util.Arrays.copyOfRange(args, 1, args.length));
                             add(description);
                             System.out.println("Task added: " + description);
-                        }
-                        else {
-                                System.out.println("Command 'add' requires a task description.");
+                        } else {
+                            System.out.println("Command 'add' requires a task description.");
                         }
                     }
                     case "list", "-l" -> list();
@@ -58,9 +58,7 @@ public class TaskManagerCLI {
                         if (args.length > 1) {
                             int id = Integer.parseInt(args[1]);
                             complete(id);
-                            System.out.println("Task " + Integer.parseInt(args[1]) + " marked as completed");
-                        }
-                        else {
+                        } else {
                             System.out.println("Command 'complete' requires a task ID");
                         }
                     }
@@ -68,13 +66,14 @@ public class TaskManagerCLI {
                         if (args.length > 1) {
                             int id = Integer.parseInt(args[1]);
                             delete(id);
-                            System.out.println("Task " + Integer.parseInt(args[1]) + " has been deleted.");
-                        }
-                        else {
+                        } else {
                             System.out.println("Command 'delete' requires a task ID");
                         }
                     }
-                    case "help", "-h" -> showAllUsage();
+                    case "help", "-h" -> {
+                        System.out.println(Config.getAppName() + " v" + Config.getAppVersion());
+                        showAllUsage();
+                    }
                     default -> {
                         System.out.println("task: '" + command + "' is not a task command.");
                         System.out.println("Try 'task help' or '-h' for help.");
@@ -92,27 +91,40 @@ public class TaskManagerCLI {
 
     public static void list() {
         taskManager.listTasks();
+        System.out.println("\nTotal tasks: " + taskManager.getTaskCount() + "/" + Config.getMaxTasks());
     }
 
+
     public static void complete(int id) {
-        taskManager.completedTask(id);
+        if (taskManager.completeTask(id)) {
+            System.out.println("Task " + id + " marked as completed");
+        } else {
+            System.out.println("Task " + id + " not found");
+        }
     }
 
     public static void delete(int id) {
-        taskManager.deleteTask(id);
+        if (taskManager.deleteTask(id)) {
+            System.out.println("Task " + id + " has been deleted.");
+        } else {
+            System.out.println("Task " + id + " not found.");
+        }
     }
 
     public static void showAllUsage() {
-        System.out.println("usage: task <command> [options]");
-        System.out.println();
-        System.out.println("All valid commands for 'task' are shown below: ");
-        System.out.println("    help,-h          Shows how to use task");
-        System.out.println("    add              Add description to the task");
-        System.out.println("    list,-l          List all the task backed up(If any)");
-        System.out.println("    delete,rm        Deletes task for the given ID");
-        System.out.println("    completed        Marks the given id as completed");
-        System.out.println();
-        System.out.println("Interactive mode:");
-        System.out.println("    Run without arguments and choose options 1-5 from the menu.");
+        try (InputStream inputStream = TaskManagerCLI.class.getResourceAsStream("/help.txt")) {
+            if (inputStream == null) {
+                System.out.println("Help file not found in resources");
+                return;
+            }
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Help file not found");
+        }
     }
 }

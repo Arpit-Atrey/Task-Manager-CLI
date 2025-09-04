@@ -24,8 +24,6 @@ Install dependencies:
 npm install
 ```
 
-<!-- Usage section hidden as requested -->
-
 ### Example Commands
 
 - Add a task:  
@@ -36,6 +34,14 @@ npm install
   `task complete 1`
 - Delete a task:  
   `task delete 1`
+
+## Recent Changes
+
+- Project structure updated: files reorganized for better clarity and maintainability.
+- New file(s) added to support additional functionality.
+- All code and documentation have been revised to reflect the latest updates.
+- Example commands now match the current CLI interface.
+- Please refer to the source code for details on new features and organization.
 
 ## Contributing
 

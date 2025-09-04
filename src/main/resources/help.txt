@@ -1,0 +1,25 @@
+===============================================
+       Welcome to Personal TaskManager!
+===============================================
+
+🎯 Manage your tasks efficiently from the command line
+
+📋 Available Commands:
+   add <description>     - Add a new task
+   list                  - Show all your tasks
+   complete <id>         - Mark a task as done
+   delete <id>          - Remove a task
+   help                 - Show detailed help
+   quit                 - Exit the program
+
+💡 Quick Start:
+   • Add your first task: add "Learn Java"
+   • View all tasks: list
+   • Mark task complete: complete 1
+
+📁 Your tasks are automatically saved to: data/tasks.txt
+
+Type 'help' for more detailed information.
+Happy task managing! 🚀
+
+===============================================
