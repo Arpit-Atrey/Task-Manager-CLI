@@ -23,7 +23,6 @@ Install dependencies:
 ```sh
 npm install
 ```
-*(or use pip install -r requirements.txt if it's a Python project)*
 
 ## Usage
 
@@ -31,7 +30,6 @@ Run the CLI:
 ```sh
 node index.js
 ```
-*(or python main.py for Python projects)*
 
 ### Example Commands
 
@@ -47,5 +45,3 @@ node index.js
 ## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first.
-
-## License
