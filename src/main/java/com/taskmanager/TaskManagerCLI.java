@@ -23,11 +23,12 @@ public class TaskManagerCLI {
                         }
                         case 2 -> list();
                         case 3 -> {
-                            System.out.println("Enter the index");
+                            System.out.print("Enter the task ID to complete: ");
                             arg = scanner.nextLine().trim();
                             complete(Integer.parseInt(arg));
                         }
                         case 4 -> {
+                            System.out.print("Enter the task ID to delete: ");
                             arg = scanner.nextLine().trim();
                             delete(Integer.parseInt(arg));
                         }
@@ -80,7 +81,7 @@ public class TaskManagerCLI {
                     }
                 }
             }
-        } catch (NullPointerException | NumberFormatException e) {
+        } catch (NullPointerException | NumberFormatException | IndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -109,5 +110,9 @@ public class TaskManagerCLI {
         System.out.println("    add              Add description to the task");
         System.out.println("    list,-l          List all the task backed up(If any)");
         System.out.println("    delete,rm        Deletes task for the given ID");
+        System.out.println("    completed        Marks the given id as completed");
+        System.out.println();
+        System.out.println("Interactive mode:");
+        System.out.println("    Run without arguments and choose options 1-5 from the menu.");
     }
 }
