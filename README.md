@@ -24,12 +24,7 @@ Install dependencies:
 npm install
 ```
 
-## Usage
-
-Run the CLI:
-```sh
-node index.js
-```
+<!-- Usage section hidden as requested -->
 
 ### Example Commands
 
