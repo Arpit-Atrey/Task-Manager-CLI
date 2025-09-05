@@ -17,15 +17,18 @@ if errorlevel 1 (
     exit /b
 )
 
+echo Using Maven at: %MAVEN_CMD%
 echo Building TaskManager JAR...
 %MAVEN_CMD% package -q
 if errorlevel 1 (
-    echo Maven build failed! Using legacy build...
+    echo Maven build failed with code %errorlevel%! Using legacy build...
     call task-legacy.bat %*
     exit /b
+) else (
+    echo Build successful!
 )
 
-echo Running TaskManager...
+echo Running: java -jar target\TaskManager-1.0.0.jar %*
 java -jar target\TaskManager-1.0.0.jar %*
 
 pause

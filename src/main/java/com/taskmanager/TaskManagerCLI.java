@@ -12,7 +12,14 @@ public class TaskManagerCLI {
             if (args.length == 0) {
                 while (running) {
 
-                    System.out.print("Choose an option: 1. Add task, 2. List tasks, 3. Complete task, 4. Delete task, 5. Quit");
+                    System.out.print("""
+                            Choose an option:
+                            1. Add task
+                            2. List tasks
+                            3. Complete task
+                            4. Delete task
+                            5. Quit\s
+                           \s""");
 
                     String options = scanner.nextLine().trim();
                     String arg;
