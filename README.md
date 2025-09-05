@@ -1,6 +1,6 @@
 # Personal Task Manager
 
-🚀 A professional cross-platform command-line task management application built with Java and Maven.
+🚀 A simple command-line tool to manage your tasks (application built with Java and Maven) efficiently.
 
 ## Features
 
