@@ -1,48 +1,87 @@
-# Task-Manager-CLI
+# Personal Task Manager
 
-**⚠️ This project is currently under active development. Features and usage may change frequently.**
+🚀 A professional cross-platform command-line task management application built with Java and Maven.
 
-A simple command-line tool to manage your tasks efficiently.
+## Features
 
-## Features (Planned / In Progress)
+- ✅ Add, complete, and delete tasks
+- ✅ List all tasks with status indicators
+- ✅ Interactive menu and direct command modes
+- ✅ Automatic file persistence
+- ✅ Cross-platform support (Windows, Linux, Mac)
+- ✅ Professional Maven build system
+- ✅ System-wide installation
 
-- Add, edit, and delete tasks
-- Mark tasks as complete/incomplete
-- List all tasks
-- Search/filter tasks
+## Requirements
 
-## Installation
+- Java 17 or higher
+- Maven 3.6 or higher (for building from source)
 
-Clone the repository:
-```sh
+## Quick Start
+
+### For Users (Pre-built JAR)
+
+1. Download the latest `TaskManager-1.0.0.jar` from releases
+2. Run: `java -jar TaskManager-1.0.0.jar list`
+
+### For Developers (Build from Source)
+
+```bash
 git clone https://github.com/yourusername/TaskManager.git
 cd TaskManager
+mvn package
+java -jar target/TaskManager-1.0.0.jar list
 ```
 
-Install dependencies:
-```sh
-npm install
+### System Installation (Windows)
+
+```bash
+git clone https://github.com/yourusername/TaskManager.git
+cd TaskManager
+.\install.bat
 ```
 
-### Example Commands
+After installation, use `task` from anywhere:
 
-- Add a task:  
-  `task add "Buy groceries"`
-- List tasks:  
-  `task list`
-- Complete a task:  
-  `task complete 1`
-- Delete a task:  
-  `task delete 1`
+## Usage
 
-## Recent Changes
+### Interactive Mode
+```bash
+task
+```
 
-- Project structure updated: files reorganized for better clarity and maintainability.
-- New file(s) added to support additional functionality.
-- All code and documentation have been revised to reflect the latest updates.
-- Example commands now match the current CLI interface.
-- Please refer to the source code for details on new features and organization.
+### Direct Commands
+```bash
+task add "Buy groceries"
+task list
+task complete 1
+task delete 2
+task help
+```
+
+## Project Structure
+
+```
+TaskManager/
+├── src/main/java/com/taskmanager/  # Java source code
+├── src/main/resources/             # Configuration files
+├── pom.xml                         # Maven configuration
+├── install.bat                     # Windows installation script
+└── README.md                       # This file
+```
+
+## Building
+
+```bash
+mvn compile      # Compile only
+mvn package      # Build JAR
+mvn clean        # Clean build files
+```
 
 ## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
