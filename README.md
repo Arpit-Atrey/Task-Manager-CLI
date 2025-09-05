@@ -42,8 +42,8 @@ This project demonstrates:
 ### For Developers (Build from Source)
 
 ```bash
-git clone https://github.com/yourusername/TaskManager.git
-cd TaskManager
+git clone https://github.com/Arpit-Atrey/Task-Manager-CLI.git
+cd Task-Manager-CLI
 mvn package
 java -jar target/TaskManager-1.0.0.jar list
 ```
@@ -51,8 +51,8 @@ java -jar target/TaskManager-1.0.0.jar list
 ### System Installation (Windows)
 
 ```bash
-git clone https://github.com/yourusername/TaskManager.git
-cd TaskManager
+git clone https://github.com/Arpit-Atrey/Task-Manager-CLI.git
+cd Task-Manager-CLI
 .\install.bat
 ```
 
