@@ -48,15 +48,29 @@ mvn package
 java -jar target/TaskManager-1.0.0.jar list
 ```
 
-### System Installation (Windows)
+### System Installation
 
+**Windows:**
 ```bash
 git clone https://github.com/Arpit-Atrey/Task-Manager-CLI.git
 cd Task-Manager-CLI
 .\install.bat
 ```
 
-After installation, use `task` from anywhere:
+**Linux/Mac:**
+```bash
+git clone https://github.com/Arpit-Atrey/Task-Manager-CLI.git
+cd Task-Manager-CLI
+chmod +x install.sh
+./install.sh
+```
+
+**Quick Linux Install (one command):**
+```bash
+curl -fsSL https://raw.githubusercontent.com/Arpit-Atrey/Task-Manager-CLI/main/install.sh | bash
+```
+
+After installation on any platform, use `task` from anywhere:
 
 ## Usage
 
