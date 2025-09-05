@@ -10,20 +10,28 @@ public class TaskManagerCLI {
         boolean running = true;
         try (Scanner scanner = new Scanner(System.in)) {
             if (args.length == 0) {
+                System.out.println("Welcome to " + Config.getAppName() + " v" + Config.getAppVersion());
+                System.out.println("======================================");
                 while (running) {
+                    System.out.println("\nChoose an option:");
+                    System.out.println(" 1. Add task");
+                    System.out.println(" 2. List tasks");
+                    System.out.println(" 3. Complete task");
+                    System.out.println(" 4. Delete task");
+                    System.out.println(" 5. Quit");
+                    System.out.print("Enter your choice (1-5): ");
 
-                    System.out.print("""
-                            Choose an option:
-                            1. Add task
-                            2. List tasks
-                            3. Complete task
-                            4. Delete task
-                            5. Quit\s
-                           \s""");
 
                     String options = scanner.nextLine().trim();
                     String arg;
-                    switch (Integer.parseInt(options)) {
+                    int choice;
+                    try {
+                        choice = Integer.parseInt(options);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a number 1-5.");
+                        continue;
+                    }
+                    switch (choice) {
                         case 1 -> {
                             System.out.print("Enter task description: ");
                             arg = scanner.nextLine().trim();
@@ -45,7 +53,7 @@ public class TaskManagerCLI {
                             System.out.println("Exiting... ");
                             running = false;
                         }
-                        default -> System.out.println("Not an option");
+                        default -> System.out.println("Invalid choice. Please enter 1-5.");
                     }
                 }
             } else {
