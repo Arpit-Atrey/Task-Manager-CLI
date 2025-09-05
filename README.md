@@ -1,6 +1,21 @@
 # Personal Task Manager
 
-🚀 A professional cross-platform command-line task management application built with Java and Maven.
+📚 A learning project: Building a command-line task management application with Java and Maven.
+
+*This project was created to learn Java programming concepts, Maven build automation, Git workflows, and software development best practices.*
+
+## Learning Objectives
+
+This project demonstrates:
+
+- 🚀 **Object-Oriented Programming** - Classes, encapsulation, inheritance
+- 🛠️ **Maven Build System** - Professional Java project structure and dependency management
+- 💾 **File I/O** - Data persistence with automatic save/load functionality
+- 🔄 **Git Workflow** - Version control, branching, and collaborative development practices
+- 💻 **Command-Line Interfaces** - Both interactive and direct command modes
+- 🌍 **Cross-Platform Development** - Code that works on Windows, Linux, and Mac
+- ⚙️ **Error Handling** - User-friendly error messages and validation
+- 📁 **Project Organization** - Professional directory structure and documentation
 
 ## Features
 
@@ -80,7 +95,22 @@ mvn clean        # Clean build files
 
 ## Contributing
 
-Pull requests are welcome! For major changes, please open an issue first.
+This is primarily a learning project, but suggestions and improvements are welcome! Feel free to:
+
+- 📝 **Open issues** for bugs or feature suggestions
+- 🔧 **Submit pull requests** with improvements or fixes
+- 💡 **Share feedback** on code structure and best practices
+- 🚀 **Use this as inspiration** for your own learning projects
+
+## Learning Journey
+
+Key concepts learned while building this project:
+- Setting up Maven projects from scratch
+- Implementing proper Java class design patterns
+- Managing file persistence and data serialization
+- Building cross-platform command-line applications
+- Creating professional project documentation
+- Using Git for version control and project management
 
 ## License
 
