@@ -51,7 +51,7 @@ public class Task {
 
         @Override
         public String toString() {
-             String status = complete ? "✓" : " ";
+             String status = complete ? "*" : " ";
              return "[" + status + "] " + id + ". " + description + " (Created: " + getCreatedAt() + ")";
         }
 

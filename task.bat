@@ -1,30 +1,31 @@
 @echo off
-java -version >nul 2>&1
-if errorlevel 1 (
-    echo Java is not installed!
-    pause
-    exit /b 1
-)
+REM TaskManager - Maven Build Script
+REM Usage: task.bat [command] [args...]
 
-if not exist build mkdir build
-if not exist build\classes mkdir build\classes
-
-REM Compile Java files
-javac -d build\classes src\main\java\com\taskmanager\*.java
-if errorlevel 1 (
-    echo Compilation failed!
-    pause
-    exit /b 1
-)
-
-REM Copy resource files
-if exist src\main\resources (
-    xcopy /E /I /Y src\main\resources\* build\classes\
-    echo Resources copied successfully
+REM Check if Maven is installed
+if exist "C:\apache-maven-3.9.11\bin\mvn.cmd" (
+    set "MAVEN_CMD=C:\apache-maven-3.9.11\bin\mvn.cmd"
 ) else (
-    echo No resources directory found - that's okay
+    set MAVEN_CMD=mvn
 )
 
-echo Compilation successful! Running TaskManager...
-java -cp build\classes com.taskmanager.TaskManagerCLI %*
+%MAVEN_CMD% -version >nul 2>&1
+if errorlevel 1 (
+    echo Maven is not installed! Using legacy build...
+    echo Install Maven from: https://maven.apache.org/download.cgi
+    call task-legacy.bat %*
+    exit /b
+)
+
+echo Building TaskManager JAR...
+%MAVEN_CMD% package -q
+if errorlevel 1 (
+    echo Maven build failed! Using legacy build...
+    call task-legacy.bat %*
+    exit /b
+)
+
+echo Running TaskManager...
+java -jar target\TaskManager-1.0.0.jar %*
+
 pause
